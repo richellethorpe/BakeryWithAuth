@@ -10,6 +10,7 @@ namespace Bakery
   {
     static void Main(string[] args)
     {
+
       WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
       builder.Services.AddControllersWithViews();
@@ -21,6 +22,7 @@ namespace Bakery
                           )
                         )
                       );
+
       builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<BakeryContext>()
                 .AddDefaultTokenProviders();
@@ -31,12 +33,14 @@ namespace Bakery
       app.UseStaticFiles();
 
       app.UseRouting();
+
       app.UseAuthentication(); 
       app.UseAuthorization();
 
       app.MapControllerRoute(
           name: "default",
-          pattern: "{controller=Home}/{action=Index}/{id?}");
+          pattern: "{controller=Home}/{action=Index}/{id?}"
+        );
 
       app.Run();
     }

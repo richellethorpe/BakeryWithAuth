@@ -11,7 +11,7 @@ namespace Bakery.Models
     public int TreatId { get; set; }
     [Required(ErrorMessage = "The treat's name cannot be empty")]
     public string Name { get; set; }
-    [Required(ErrorMessage = "The engineer's last name cannot be empty")]
+    [Required(ErrorMessage = "The treat's description cannot be empty")]
     public string Description { get; set; }
 
 

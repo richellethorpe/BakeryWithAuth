@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Bakery.Models;
+@model Bakery.Models.Treat;
+
+<h1>Treat Details</h1>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
+<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)<h3>
+
+
+@if(Model.JoinEntity.Count == 0)
+{
+  <h3>No flavors have been assigned to this treat's profile yet.</h3>
+}
+else
+{
+  <h3>Flavors assigned to this treat:</h3>
+  <ol>
+    @foreach(TreatFlavor treatFlavor in Model.JoinEntity)
+    {
+      <li>@treatFlavor.Flavor.Name</li>
+    }
+  </ol>
+}
+<p>@Html.ActionLink("Add machine to engineer", "AddMachine", new { id = Model.EngineerId})</p>
+<p>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</p>

@@ -21,7 +21,9 @@ else
   <ul>
     @foreach(TreatFlavor join in Model.TreatFlavors)
     {
-      <li>Tag: @join.Flavor.Name</li>
+      <li>@join.Flavor.Name</li>
     }
   </ul>
 }
+
+<p>@Html.ActionLink("Add a new flavor to treat", "AddFlavor", new { id = Model.TreatId})</p>

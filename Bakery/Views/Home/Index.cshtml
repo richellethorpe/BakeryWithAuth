@@ -35,7 +35,7 @@
       </div>
     </nav>
       <BR>
-      <h1>VIEW OUR TEAM & EQUIPMENT</h1>
+      <h1>VIEW OUR TREATS & FLAVORS</h1>
       </BR>
       
       @using Bakery.Models;
@@ -48,7 +48,7 @@
       <ul>
         @foreach (Treat treat in Model["treats"])
         {
-          <li>@Html.ActionLink($"{treat.Name}", "Details", "Engineer", new{id = @treat.TreatId})</li>
+          <li>@Html.ActionLink($"{treat.Name}", "Details", "Treat", new {id = @treat.TreatId})</li>
         }
       </ul>
 

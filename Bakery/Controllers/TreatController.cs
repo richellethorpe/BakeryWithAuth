@@ -5,7 +5,7 @@ using Bakery.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TreatFood.Controllers
+namespace Bakery.Controllers
 {
   public class TreatController : Controller
   {
@@ -42,36 +42,13 @@ namespace TreatFood.Controllers
      }
     }
 
-
-    public ActionResult Details(int id)
+    public ActionResult Details( int id)
     {
-      Treat thisTreat = _db.Treats 
-                          .Inclue(treat => treat.JoinEntity)
-                          .ThenInclude(join => join.Flavor)
-                          .FirstOrDefault(treat => treat.TreatId == id);
+      Treat thisTreat = _db.Treats
+                        .Include(treat => treat.TreatFlavors)
+                        .ThenInclude(treatFlavor => treatFlavor.Flavor)
+                        .FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
-    }
-
-    public ActionResult AddFlavor(int id)
-    {
-      Treat thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);
-      
-      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
-      return View(thisTreat);
-    }
-     
-    [HttpPost]
-    public ActionResult AddFlavor(Treat treat, int flavorId)
-    {
-    #nullable enable
-    TreatFlavor? treatFlavor = _db.JoinEntity.FirstOrDefault(TreatFlavor => (TreatFlavor.FlavorId == flavorId && TreatFlavor.TreatId == treat.TreatId));
-    #nullable disable
-    if(treatFlavor == null && flavorId !=0)
-    {
-    _db.JoinEntity.Add(new TreatFlavor() {TreatId = treat.TreatId, FlavorId = flavorId});
-    _db.SaveChanges();
-    }
-    return RedirectToAction("Details", new { id = treat.TreatId});
     }
 
   }

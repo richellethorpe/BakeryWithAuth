@@ -1,8 +1,9 @@
-// using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Bakery.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Bakery.Controllers
 {
@@ -37,6 +38,8 @@ namespace Bakery.Controllers
     public ActionResult Details(int id)
     {
       Flavor thisFlavor = _db.Flavors 
+                          .Include(flavor => flavor.TreatFlavors)
+                          .ThenInclude(join => join.Treat)
                           .FirstOrDefault(flavor => flavor.FlavorId == id);
       return View(thisFlavor);
     }

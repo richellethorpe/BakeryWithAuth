@@ -11,5 +11,18 @@
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
 
-
+@if(@Model.TreatFlavors.Count == 0)
+{
+  <p>This flavor does not belong to any treats.</p>
+}
+else
+{
+  <h4>Treats the flavor belongs to:</h4>
+  <ul>
+  @foreach(TreatFlavor treatFlavor in Model.TreatFlavors)
+  {
+    <li>@treatFlavor.Treat.Name</li>
+  }
+  </ul>
+}
 <p>@Html.ActionLink("Add new flavor", "Create")</p>

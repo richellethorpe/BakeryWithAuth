@@ -15,6 +15,6 @@ namespace Bakery.Models
     public string Description { get; set; }
 
 
-    public List<TreatFlavor> JoinEntity { get; }
+    public List<TreatFlavor> TreatFlavors { get; }
   }
 }

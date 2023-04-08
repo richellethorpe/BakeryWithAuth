@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+// using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Bakery.Models;
 using System.Collections.Generic;
@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace Bakery.Controllers
 {
-  public class CategoriesController : Controller
+  public class FlavorController : Controller
   {
     private readonly BakeryContext _db;
 
-    public CategoriesController(BakeryContext db)
+    public FlavorController(BakeryContext db)
     {
       _db = db;
     }
@@ -33,5 +33,14 @@ namespace Bakery.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Details(int id)
+    {
+      Flavor thisFlavor = _db.Flavors 
+                          .FirstOrDefault(flavor => flavor.FlavorId == id);
+      return View(thisFlavor);
+    }
+
+
   }
 }

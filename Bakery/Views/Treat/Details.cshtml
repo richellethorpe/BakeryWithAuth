@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Bakery.Models
+@model Bakery.Models.Treat
+
+<h2>Item Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3> 
+<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>   
+
+
+@if(@Model.TreatFlavors.Count == 0)
+{
+  <p>This treat has the following flavors associated yet!</p>
+}
+else
+{
+  <h4>This treat has the following flavors associated:</h4>
+  <ul>
+    @foreach(TreatFlavor join in Model.TreatFlavors)
+    {
+      <li>Tag: @join.Flavor.Name</li>
+    }
+  </ul>
+}

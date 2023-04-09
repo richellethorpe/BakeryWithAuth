@@ -6,11 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 
-
-
 namespace Bakery.Controllers
 {
-  [Authorize]
+  
   public class TreatController : Controller
   {
     private readonly BakeryContext _db;
@@ -107,8 +105,6 @@ namespace Bakery.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
-
 
   }
 }

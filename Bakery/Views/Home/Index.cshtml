@@ -31,6 +31,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/Flavor/Create">Add New Flavor</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Account/Index">Sign In</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -63,7 +66,7 @@
             <li>@Html.ActionLink(@flavor.Name, "Details", "Flavor", new{id = @flavor.FlavorId})</li>
           }
       </ul>
-    <p>@Html.ActionLink("Manage flavors", "Index", "Flavor")</p>
+    <p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>
 
   </body>
 </html>

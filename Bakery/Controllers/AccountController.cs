@@ -54,7 +54,8 @@ namespace Bakery.Controllers
         }
       }
     }
-    public ActionResult Login()
+
+        public ActionResult Login()
     {
       return View();
     }
@@ -80,6 +81,7 @@ namespace Bakery.Controllers
         }
       }
     }
+
     [HttpPost]
     public async Task<ActionResult> LogOff()
     {

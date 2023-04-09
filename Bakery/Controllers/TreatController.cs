@@ -4,9 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Bakery.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+
+
 
 namespace Bakery.Controllers
 {
+  [Authorize]
   public class TreatController : Controller
   {
     private readonly BakeryContext _db;
@@ -16,6 +20,7 @@ namespace Bakery.Controllers
       _db = db;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
       List<Treat> model = _db.Treats.ToList();
@@ -42,6 +47,7 @@ namespace Bakery.Controllers
      }
     }
 
+    [AllowAnonymous]
     public ActionResult Details( int id)
     {
       Treat thisTreat = _db.Treats

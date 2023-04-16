@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Bakery.Controllers
 {
- 
+ [Authorize]
   public class FlavorController : Controller
   {
     private readonly BakeryContext _db;

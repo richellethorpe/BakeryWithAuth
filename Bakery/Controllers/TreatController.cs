@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Bakery.Controllers
 {
-  
+  [Authorize]
   public class TreatController : Controller
   {
     private readonly BakeryContext _db;
